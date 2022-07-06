@@ -17,7 +17,7 @@ require (
 	golang.org/x/lint v0.0.0-20210508222113-6edffad5e616
 	golang.org/x/net v0.0.0-20220412020605-290c469a71a5
 	golang.org/x/time v0.0.0-20220224211638-0e9765cccd65
-	golang.org/x/tools/gopls v0.8.4
+	golang.org/x/tools/gopls v0.9.0
 )
 
 require (
@@ -179,13 +179,13 @@ require (
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
 	golang.org/x/sys v0.0.0-20220422013727-9388b58f7150 // indirect
 	golang.org/x/text v0.3.7 // indirect
-	golang.org/x/tools v0.1.11-0.20220513164230-dfee1649af67 // indirect
-	golang.org/x/vuln v0.0.0-20220503210553-a5481fb0c8be // indirect
+	golang.org/x/tools v0.1.12-0.20220630195555-6178576f8ba1 // indirect
+	golang.org/x/vuln v0.0.0-20220613164644-4eb5ba49563c // indirect
 	google.golang.org/protobuf v1.28.0 // indirect
 	gopkg.in/ini.v1 v1.66.4 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	honnef.co/go/tools v0.3.1 // indirect
+	honnef.co/go/tools v0.3.2 // indirect
 	mvdan.cc/gofumpt v0.3.1 // indirect
 	mvdan.cc/interfacer v0.0.0-20180901003855-c20040233aed // indirect
 	mvdan.cc/lint v0.0.0-20170908181259-adc824a0674b // indirect
