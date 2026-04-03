@@ -24,6 +24,7 @@ func TestScheduleNewWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -31,8 +32,9 @@ func TestScheduleNewWithOptionalParams(t *testing.T) {
 		context.TODO(),
 		"example.com",
 		speed.ScheduleNewParams{
-			ZoneID: cloudflare.F("023e105f4ecef8ad9ca31a8372d0c353"),
-			Region: cloudflare.F(speed.ScheduleNewParamsRegionUsCentral1),
+			ZoneID:    cloudflare.F("023e105f4ecef8ad9ca31a8372d0c353"),
+			Frequency: cloudflare.F(speed.ScheduleNewParamsFrequencyDaily),
+			Region:    cloudflare.F(speed.ScheduleNewParamsRegionUsCentral1),
 		},
 	)
 	if err != nil {
@@ -54,6 +56,7 @@ func TestScheduleDeleteWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -84,6 +87,7 @@ func TestScheduleGetWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)

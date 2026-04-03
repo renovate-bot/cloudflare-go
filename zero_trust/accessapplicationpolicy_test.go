@@ -25,6 +25,7 @@ func TestAccessApplicationPolicyNewWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -52,7 +53,7 @@ func TestAccessApplicationPolicyNewWithOptionalParams(t *testing.T) {
 			IsolationRequired: cloudflare.F(false),
 			MfaConfig: cloudflare.F(zero_trust.AccessApplicationPolicyNewParamsMfaConfig{
 				AllowedAuthenticators: cloudflare.F([]zero_trust.AccessApplicationPolicyNewParamsMfaConfigAllowedAuthenticator{zero_trust.AccessApplicationPolicyNewParamsMfaConfigAllowedAuthenticatorTotp, zero_trust.AccessApplicationPolicyNewParamsMfaConfigAllowedAuthenticatorBiometrics, zero_trust.AccessApplicationPolicyNewParamsMfaConfigAllowedAuthenticatorSecurityKey}),
-				MfaBypass:             cloudflare.F(false),
+				MfaDisabled:           cloudflare.F(false),
 				SessionDuration:       cloudflare.F("24h"),
 			}),
 			Precedence:                   cloudflare.F(int64(0)),
@@ -81,6 +82,7 @@ func TestAccessApplicationPolicyUpdateWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -109,7 +111,7 @@ func TestAccessApplicationPolicyUpdateWithOptionalParams(t *testing.T) {
 			IsolationRequired: cloudflare.F(false),
 			MfaConfig: cloudflare.F(zero_trust.AccessApplicationPolicyUpdateParamsMfaConfig{
 				AllowedAuthenticators: cloudflare.F([]zero_trust.AccessApplicationPolicyUpdateParamsMfaConfigAllowedAuthenticator{zero_trust.AccessApplicationPolicyUpdateParamsMfaConfigAllowedAuthenticatorTotp, zero_trust.AccessApplicationPolicyUpdateParamsMfaConfigAllowedAuthenticatorBiometrics, zero_trust.AccessApplicationPolicyUpdateParamsMfaConfigAllowedAuthenticatorSecurityKey}),
-				MfaBypass:             cloudflare.F(false),
+				MfaDisabled:           cloudflare.F(false),
 				SessionDuration:       cloudflare.F("24h"),
 			}),
 			Precedence:                   cloudflare.F(int64(0)),
@@ -138,6 +140,7 @@ func TestAccessApplicationPolicyListWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -170,6 +173,7 @@ func TestAccessApplicationPolicyDeleteWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)

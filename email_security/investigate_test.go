@@ -36,6 +36,7 @@ func TestInvestigateListWithOptionalParams(t *testing.T) {
 		DetectionsOnly:   cloudflare.F(true),
 		Domain:           cloudflare.F("domain"),
 		End:              cloudflare.F(time.Now()),
+		ExactSubject:     cloudflare.F("exact_subject"),
 		FinalDisposition: cloudflare.F(email_security.InvestigateListParamsFinalDispositionMalicious),
 		MessageAction:    cloudflare.F(email_security.InvestigateListParamsMessageActionPreview),
 		MessageID:        cloudflare.F("message_id"),
@@ -47,6 +48,7 @@ func TestInvestigateListWithOptionalParams(t *testing.T) {
 		Sender:           cloudflare.F("sender"),
 		Start:            cloudflare.F(time.Now()),
 		Subject:          cloudflare.F("subject"),
+		Submissions:      cloudflare.F(true),
 	})
 	if err != nil {
 		var apierr *cloudflare.Error

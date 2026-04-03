@@ -25,6 +25,7 @@ func TestConnectorNewWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -36,7 +37,9 @@ func TestConnectorNewWithOptionalParams(t *testing.T) {
 			SerialNumber:     cloudflare.F("serial_number"),
 		}),
 		Activated:                    cloudflare.F(true),
-		InterruptWindowDurationHours: cloudflare.F(0.000000),
+		InterruptWindowDaysOfWeek:    cloudflare.F([]magic_transit.ConnectorNewParamsInterruptWindowDaysOfWeek{magic_transit.ConnectorNewParamsInterruptWindowDaysOfWeekSunday}),
+		InterruptWindowDurationHours: cloudflare.F(1.000000),
+		InterruptWindowEmbargoDates:  cloudflare.F([]string{"string"}),
 		InterruptWindowHourOfDay:     cloudflare.F(0.000000),
 		Notes:                        cloudflare.F("notes"),
 		Timezone:                     cloudflare.F("timezone"),
@@ -60,6 +63,7 @@ func TestConnectorUpdateWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -69,7 +73,9 @@ func TestConnectorUpdateWithOptionalParams(t *testing.T) {
 		magic_transit.ConnectorUpdateParams{
 			AccountID:                    cloudflare.F("023e105f4ecef8ad9ca31a8372d0c353"),
 			Activated:                    cloudflare.F(true),
-			InterruptWindowDurationHours: cloudflare.F(0.000000),
+			InterruptWindowDaysOfWeek:    cloudflare.F([]magic_transit.ConnectorUpdateParamsInterruptWindowDaysOfWeek{magic_transit.ConnectorUpdateParamsInterruptWindowDaysOfWeekSunday}),
+			InterruptWindowDurationHours: cloudflare.F(1.000000),
+			InterruptWindowEmbargoDates:  cloudflare.F([]string{"string"}),
 			InterruptWindowHourOfDay:     cloudflare.F(0.000000),
 			Notes:                        cloudflare.F("notes"),
 			ProvisionLicense:             cloudflare.F(true),
@@ -95,6 +101,7 @@ func TestConnectorList(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -120,6 +127,7 @@ func TestConnectorDelete(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -149,6 +157,7 @@ func TestConnectorEditWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -158,7 +167,9 @@ func TestConnectorEditWithOptionalParams(t *testing.T) {
 		magic_transit.ConnectorEditParams{
 			AccountID:                    cloudflare.F("023e105f4ecef8ad9ca31a8372d0c353"),
 			Activated:                    cloudflare.F(true),
-			InterruptWindowDurationHours: cloudflare.F(0.000000),
+			InterruptWindowDaysOfWeek:    cloudflare.F([]magic_transit.ConnectorEditParamsInterruptWindowDaysOfWeek{magic_transit.ConnectorEditParamsInterruptWindowDaysOfWeekSunday}),
+			InterruptWindowDurationHours: cloudflare.F(1.000000),
+			InterruptWindowEmbargoDates:  cloudflare.F([]string{"string"}),
 			InterruptWindowHourOfDay:     cloudflare.F(0.000000),
 			Notes:                        cloudflare.F("notes"),
 			ProvisionLicense:             cloudflare.F(true),
@@ -184,6 +195,7 @@ func TestConnectorGet(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)

@@ -25,6 +25,7 @@ func TestCfInterconnectUpdateWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -49,6 +50,7 @@ func TestCfInterconnectUpdateWithOptionalParams(t *testing.T) {
 			InterfaceAddress:  cloudflare.F("192.0.2.0/31"),
 			InterfaceAddress6: cloudflare.F("2606:54c1:7:0:a9fe:12d2:1:200/127"),
 			Mtu:               cloudflare.F(int64(0)),
+			Name:              cloudflare.F("pni_ord"),
 			XMagicNewHcTarget: cloudflare.F(true),
 		},
 	)
@@ -71,6 +73,7 @@ func TestCfInterconnectListWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -98,6 +101,7 @@ func TestCfInterconnectBulkUpdateWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -125,6 +129,7 @@ func TestCfInterconnectGetWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)

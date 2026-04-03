@@ -25,27 +25,34 @@ func TestInstanceNewWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
 	_, err := client.AISearch.Instances.New(context.TODO(), ai_search.InstanceNewParams{
-		AccountID:     cloudflare.F("c3dc5f0b34a14ff8e1b3ec04895e1b22"),
-		ID:            cloudflare.F("my-ai-search"),
-		Source:        cloudflare.F("source"),
-		Type:          cloudflare.F(ai_search.InstanceNewParamsTypeR2),
-		AIGatewayID:   cloudflare.F("ai_gateway_id"),
-		AISearchModel: cloudflare.F(ai_search.InstanceNewParamsAISearchModelCfMetaLlama3_3_70bInstructFp8Fast),
-		Chunk:         cloudflare.F(true),
-		ChunkOverlap:  cloudflare.F(int64(0)),
-		ChunkSize:     cloudflare.F(int64(64)),
+		AccountID:      cloudflare.F("c3dc5f0b34a14ff8e1b3ec04895e1b22"),
+		ID:             cloudflare.F("my-ai-search"),
+		AIGatewayID:    cloudflare.F("ai_gateway_id"),
+		AISearchModel:  cloudflare.F(ai_search.InstanceNewParamsAISearchModelCfMetaLlama3_3_70bInstructFp8Fast),
+		Cache:          cloudflare.F(true),
+		CacheThreshold: cloudflare.F(ai_search.InstanceNewParamsCacheThresholdSuperStrictMatch),
+		Chunk:          cloudflare.F(true),
+		ChunkOverlap:   cloudflare.F(int64(0)),
+		ChunkSize:      cloudflare.F(int64(64)),
 		CustomMetadata: cloudflare.F([]ai_search.InstanceNewParamsCustomMetadata{{
 			DataType:  cloudflare.F(ai_search.InstanceNewParamsCustomMetadataDataTypeText),
 			FieldName: cloudflare.F("x"),
 		}}),
-		EmbeddingModel:      cloudflare.F(ai_search.InstanceNewParamsEmbeddingModelCfQwenQwen3Embedding0_6b),
-		FusionMethod:        cloudflare.F(ai_search.InstanceNewParamsFusionMethodMax),
-		HybridSearchEnabled: cloudflare.F(true),
-		MaxNumResults:       cloudflare.F(int64(1)),
+		EmbeddingModel: cloudflare.F(ai_search.InstanceNewParamsEmbeddingModelCfQwenQwen3Embedding0_6b),
+		FusionMethod:   cloudflare.F(ai_search.InstanceNewParamsFusionMethodMax),
+		IndexMethod: cloudflare.F(ai_search.InstanceNewParamsIndexMethod{
+			Keyword: cloudflare.F(true),
+			Vector:  cloudflare.F(true),
+		}),
+		IndexingOptions: cloudflare.F(ai_search.InstanceNewParamsIndexingOptions{
+			KeywordTokenizer: cloudflare.F(ai_search.InstanceNewParamsIndexingOptionsKeywordTokenizerPorter),
+		}),
+		MaxNumResults: cloudflare.F(int64(1)),
 		Metadata: cloudflare.F(ai_search.InstanceNewParamsMetadata{
 			CreatedFromAISearchWizard: cloudflare.F(true),
 			WorkerDomain:              cloudflare.F("worker_domain"),
@@ -72,18 +79,34 @@ func TestInstanceNewWithOptionalParams(t *testing.T) {
 		Reranking:      cloudflare.F(true),
 		RerankingModel: cloudflare.F(ai_search.InstanceNewParamsRerankingModelCfBaaiBgeRerankerBase),
 		RetrievalOptions: cloudflare.F(ai_search.InstanceNewParamsRetrievalOptions{
-			KeywordMatchMode: cloudflare.F(ai_search.InstanceNewParamsRetrievalOptionsKeywordMatchModeExactMatch),
+			BoostBy: cloudflare.F([]ai_search.InstanceNewParamsRetrievalOptionsBoostBy{{
+				Field:     cloudflare.F("timestamp"),
+				Direction: cloudflare.F(ai_search.InstanceNewParamsRetrievalOptionsBoostByDirectionDesc),
+			}}),
+			KeywordMatchMode: cloudflare.F(ai_search.InstanceNewParamsRetrievalOptionsKeywordMatchModeAnd),
 		}),
 		RewriteModel:   cloudflare.F(ai_search.InstanceNewParamsRewriteModelCfMetaLlama3_3_70bInstructFp8Fast),
 		RewriteQuery:   cloudflare.F(true),
 		ScoreThreshold: cloudflare.F(0.000000),
+		Source:         cloudflare.F("source"),
 		SourceParams: cloudflare.F(ai_search.InstanceNewParamsSourceParams{
 			ExcludeItems:   cloudflare.F([]string{"/admin/**", "/private/**", "**\\temp\\**"}),
 			IncludeItems:   cloudflare.F([]string{"/blog/**", "/docs/**/*.html", "**\\blog\\**.html"}),
 			Prefix:         cloudflare.F("prefix"),
 			R2Jurisdiction: cloudflare.F("r2_jurisdiction"),
 			WebCrawler: cloudflare.F(ai_search.InstanceNewParamsSourceParamsWebCrawler{
+				CrawlOptions: cloudflare.F(ai_search.InstanceNewParamsSourceParamsWebCrawlerCrawlOptions{
+					Depth:                cloudflare.F(1.000000),
+					IncludeExternalLinks: cloudflare.F(true),
+					IncludeSubdomains:    cloudflare.F(true),
+					MaxAge:               cloudflare.F(0.000000),
+					Source:               cloudflare.F(ai_search.InstanceNewParamsSourceParamsWebCrawlerCrawlOptionsSourceAll),
+				}),
 				ParseOptions: cloudflare.F(ai_search.InstanceNewParamsSourceParamsWebCrawlerParseOptions{
+					ContentSelector: cloudflare.F([]ai_search.InstanceNewParamsSourceParamsWebCrawlerParseOptionsContentSelector{{
+						Path:     cloudflare.F("**/blog/**"),
+						Selector: cloudflare.F("article .post-body"),
+					}}),
 					IncludeHeaders: cloudflare.F(map[string]string{
 						"foo": "string",
 					}),
@@ -100,6 +123,7 @@ func TestInstanceNewWithOptionalParams(t *testing.T) {
 			}),
 		}),
 		TokenID: cloudflare.F("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
+		Type:    cloudflare.F(ai_search.InstanceNewParamsTypeR2),
 	})
 	if err != nil {
 		var apierr *cloudflare.Error
@@ -120,6 +144,7 @@ func TestInstanceUpdateWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -139,10 +164,16 @@ func TestInstanceUpdateWithOptionalParams(t *testing.T) {
 				DataType:  cloudflare.F(ai_search.InstanceUpdateParamsCustomMetadataDataTypeText),
 				FieldName: cloudflare.F("x"),
 			}}),
-			EmbeddingModel:      cloudflare.F(ai_search.InstanceUpdateParamsEmbeddingModelCfQwenQwen3Embedding0_6b),
-			FusionMethod:        cloudflare.F(ai_search.InstanceUpdateParamsFusionMethodMax),
-			HybridSearchEnabled: cloudflare.F(true),
-			MaxNumResults:       cloudflare.F(int64(1)),
+			EmbeddingModel: cloudflare.F(ai_search.InstanceUpdateParamsEmbeddingModelCfQwenQwen3Embedding0_6b),
+			FusionMethod:   cloudflare.F(ai_search.InstanceUpdateParamsFusionMethodMax),
+			IndexMethod: cloudflare.F(ai_search.InstanceUpdateParamsIndexMethod{
+				Keyword: cloudflare.F(true),
+				Vector:  cloudflare.F(true),
+			}),
+			IndexingOptions: cloudflare.F(ai_search.InstanceUpdateParamsIndexingOptions{
+				KeywordTokenizer: cloudflare.F(ai_search.InstanceUpdateParamsIndexingOptionsKeywordTokenizerPorter),
+			}),
+			MaxNumResults: cloudflare.F(int64(1)),
 			Metadata: cloudflare.F(ai_search.InstanceUpdateParamsMetadata{
 				CreatedFromAISearchWizard: cloudflare.F(true),
 				WorkerDomain:              cloudflare.F("worker_domain"),
@@ -170,7 +201,11 @@ func TestInstanceUpdateWithOptionalParams(t *testing.T) {
 			Reranking:      cloudflare.F(true),
 			RerankingModel: cloudflare.F(ai_search.InstanceUpdateParamsRerankingModelCfBaaiBgeRerankerBase),
 			RetrievalOptions: cloudflare.F(ai_search.InstanceUpdateParamsRetrievalOptions{
-				KeywordMatchMode: cloudflare.F(ai_search.InstanceUpdateParamsRetrievalOptionsKeywordMatchModeExactMatch),
+				BoostBy: cloudflare.F([]ai_search.InstanceUpdateParamsRetrievalOptionsBoostBy{{
+					Field:     cloudflare.F("timestamp"),
+					Direction: cloudflare.F(ai_search.InstanceUpdateParamsRetrievalOptionsBoostByDirectionDesc),
+				}}),
+				KeywordMatchMode: cloudflare.F(ai_search.InstanceUpdateParamsRetrievalOptionsKeywordMatchModeAnd),
 			}),
 			RewriteModel:   cloudflare.F(ai_search.InstanceUpdateParamsRewriteModelCfMetaLlama3_3_70bInstructFp8Fast),
 			RewriteQuery:   cloudflare.F(true),
@@ -181,7 +216,18 @@ func TestInstanceUpdateWithOptionalParams(t *testing.T) {
 				Prefix:         cloudflare.F("prefix"),
 				R2Jurisdiction: cloudflare.F("r2_jurisdiction"),
 				WebCrawler: cloudflare.F(ai_search.InstanceUpdateParamsSourceParamsWebCrawler{
+					CrawlOptions: cloudflare.F(ai_search.InstanceUpdateParamsSourceParamsWebCrawlerCrawlOptions{
+						Depth:                cloudflare.F(1.000000),
+						IncludeExternalLinks: cloudflare.F(true),
+						IncludeSubdomains:    cloudflare.F(true),
+						MaxAge:               cloudflare.F(0.000000),
+						Source:               cloudflare.F(ai_search.InstanceUpdateParamsSourceParamsWebCrawlerCrawlOptionsSourceAll),
+					}),
 					ParseOptions: cloudflare.F(ai_search.InstanceUpdateParamsSourceParamsWebCrawlerParseOptions{
+						ContentSelector: cloudflare.F([]ai_search.InstanceUpdateParamsSourceParamsWebCrawlerParseOptionsContentSelector{{
+							Path:     cloudflare.F("**/blog/**"),
+							Selector: cloudflare.F("article .post-body"),
+						}}),
 						IncludeHeaders: cloudflare.F(map[string]string{
 							"foo": "string",
 						}),
@@ -224,14 +270,18 @@ func TestInstanceListWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
 	_, err := client.AISearch.Instances.List(context.TODO(), ai_search.InstanceListParams{
-		AccountID: cloudflare.F("c3dc5f0b34a14ff8e1b3ec04895e1b22"),
-		Page:      cloudflare.F(int64(1)),
-		PerPage:   cloudflare.F(int64(1)),
-		Search:    cloudflare.F("search"),
+		AccountID:        cloudflare.F("c3dc5f0b34a14ff8e1b3ec04895e1b22"),
+		Namespace:        cloudflare.F("namespace"),
+		OrderBy:          cloudflare.F(ai_search.InstanceListParamsOrderByCreatedAt),
+		OrderByDirection: cloudflare.F(ai_search.InstanceListParamsOrderByDirectionAsc),
+		Page:             cloudflare.F(int64(1)),
+		PerPage:          cloudflare.F(int64(1)),
+		Search:           cloudflare.F("search"),
 	})
 	if err != nil {
 		var apierr *cloudflare.Error
@@ -252,6 +302,7 @@ func TestInstanceDelete(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -281,6 +332,7 @@ func TestInstanceChatCompletionsWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -294,6 +346,10 @@ func TestInstanceChatCompletionsWithOptionalParams(t *testing.T) {
 				Role:    cloudflare.F(ai_search.InstanceChatCompletionsParamsMessagesRoleSystem),
 			}}),
 			AISearchOptions: cloudflare.F(ai_search.InstanceChatCompletionsParamsAISearchOptions{
+				Cache: cloudflare.F(ai_search.InstanceChatCompletionsParamsAISearchOptionsCache{
+					CacheThreshold: cloudflare.F(ai_search.InstanceChatCompletionsParamsAISearchOptionsCacheCacheThresholdSuperStrictMatch),
+					Enabled:        cloudflare.F(true),
+				}),
 				QueryRewrite: cloudflare.F(ai_search.InstanceChatCompletionsParamsAISearchOptionsQueryRewrite{
 					Enabled:       cloudflare.F(true),
 					Model:         cloudflare.F(ai_search.InstanceChatCompletionsParamsAISearchOptionsQueryRewriteModelCfMetaLlama3_3_70bInstructFp8Fast),
@@ -305,12 +361,16 @@ func TestInstanceChatCompletionsWithOptionalParams(t *testing.T) {
 					Model:          cloudflare.F(ai_search.InstanceChatCompletionsParamsAISearchOptionsRerankingModelCfBaaiBgeRerankerBase),
 				}),
 				Retrieval: cloudflare.F(ai_search.InstanceChatCompletionsParamsAISearchOptionsRetrieval{
+					BoostBy: cloudflare.F([]ai_search.InstanceChatCompletionsParamsAISearchOptionsRetrievalBoostBy{{
+						Field:     cloudflare.F("timestamp"),
+						Direction: cloudflare.F(ai_search.InstanceChatCompletionsParamsAISearchOptionsRetrievalBoostByDirectionDesc),
+					}}),
 					ContextExpansion: cloudflare.F(int64(0)),
 					Filters: cloudflare.F(map[string]interface{}{
 						"foo": "bar",
 					}),
 					FusionMethod:     cloudflare.F(ai_search.InstanceChatCompletionsParamsAISearchOptionsRetrievalFusionMethodMax),
-					KeywordMatchMode: cloudflare.F(ai_search.InstanceChatCompletionsParamsAISearchOptionsRetrievalKeywordMatchModeExactMatch),
+					KeywordMatchMode: cloudflare.F(ai_search.InstanceChatCompletionsParamsAISearchOptionsRetrievalKeywordMatchModeAnd),
 					MatchThreshold:   cloudflare.F(0.000000),
 					MaxNumResults:    cloudflare.F(int64(1)),
 					RetrievalType:    cloudflare.F(ai_search.InstanceChatCompletionsParamsAISearchOptionsRetrievalRetrievalTypeVector),
@@ -340,6 +400,7 @@ func TestInstanceRead(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -369,6 +430,7 @@ func TestInstanceSearchWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -382,6 +444,10 @@ func TestInstanceSearchWithOptionalParams(t *testing.T) {
 				Role:    cloudflare.F(ai_search.InstanceSearchParamsMessagesRoleSystem),
 			}}),
 			AISearchOptions: cloudflare.F(ai_search.InstanceSearchParamsAISearchOptions{
+				Cache: cloudflare.F(ai_search.InstanceSearchParamsAISearchOptionsCache{
+					CacheThreshold: cloudflare.F(ai_search.InstanceSearchParamsAISearchOptionsCacheCacheThresholdSuperStrictMatch),
+					Enabled:        cloudflare.F(true),
+				}),
 				QueryRewrite: cloudflare.F(ai_search.InstanceSearchParamsAISearchOptionsQueryRewrite{
 					Enabled:       cloudflare.F(true),
 					Model:         cloudflare.F(ai_search.InstanceSearchParamsAISearchOptionsQueryRewriteModelCfMetaLlama3_3_70bInstructFp8Fast),
@@ -393,12 +459,16 @@ func TestInstanceSearchWithOptionalParams(t *testing.T) {
 					Model:          cloudflare.F(ai_search.InstanceSearchParamsAISearchOptionsRerankingModelCfBaaiBgeRerankerBase),
 				}),
 				Retrieval: cloudflare.F(ai_search.InstanceSearchParamsAISearchOptionsRetrieval{
+					BoostBy: cloudflare.F([]ai_search.InstanceSearchParamsAISearchOptionsRetrievalBoostBy{{
+						Field:     cloudflare.F("timestamp"),
+						Direction: cloudflare.F(ai_search.InstanceSearchParamsAISearchOptionsRetrievalBoostByDirectionDesc),
+					}}),
 					ContextExpansion: cloudflare.F(int64(0)),
 					Filters: cloudflare.F(map[string]interface{}{
 						"foo": "bar",
 					}),
 					FusionMethod:     cloudflare.F(ai_search.InstanceSearchParamsAISearchOptionsRetrievalFusionMethodMax),
-					KeywordMatchMode: cloudflare.F(ai_search.InstanceSearchParamsAISearchOptionsRetrievalKeywordMatchModeExactMatch),
+					KeywordMatchMode: cloudflare.F(ai_search.InstanceSearchParamsAISearchOptionsRetrievalKeywordMatchModeAnd),
 					MatchThreshold:   cloudflare.F(0.000000),
 					MaxNumResults:    cloudflare.F(int64(1)),
 					RetrievalType:    cloudflare.F(ai_search.InstanceSearchParamsAISearchOptionsRetrievalRetrievalTypeVector),
@@ -426,6 +496,7 @@ func TestInstanceStats(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)

@@ -25,6 +25,7 @@ func TestAccessApplicationNewWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -87,7 +88,7 @@ func TestAccessApplicationNewWithOptionalParams(t *testing.T) {
 			LogoURL:                 cloudflare.F("https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg"),
 			MfaConfig: cloudflare.F(zero_trust.AccessApplicationNewParamsBodySelfHostedApplicationMfaConfig{
 				AllowedAuthenticators: cloudflare.F([]zero_trust.AccessApplicationNewParamsBodySelfHostedApplicationMfaConfigAllowedAuthenticator{zero_trust.AccessApplicationNewParamsBodySelfHostedApplicationMfaConfigAllowedAuthenticatorTotp, zero_trust.AccessApplicationNewParamsBodySelfHostedApplicationMfaConfigAllowedAuthenticatorBiometrics, zero_trust.AccessApplicationNewParamsBodySelfHostedApplicationMfaConfigAllowedAuthenticatorSecurityKey}),
-				MfaBypass:             cloudflare.F(false),
+				MfaDisabled:           cloudflare.F(false),
 				SessionDuration:       cloudflare.F("24h"),
 			}),
 			Name: cloudflare.F("Admin Site"),
@@ -164,6 +165,7 @@ func TestAccessApplicationUpdateWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -229,7 +231,7 @@ func TestAccessApplicationUpdateWithOptionalParams(t *testing.T) {
 				LogoURL:                 cloudflare.F("https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg"),
 				MfaConfig: cloudflare.F(zero_trust.AccessApplicationUpdateParamsBodySelfHostedApplicationMfaConfig{
 					AllowedAuthenticators: cloudflare.F([]zero_trust.AccessApplicationUpdateParamsBodySelfHostedApplicationMfaConfigAllowedAuthenticator{zero_trust.AccessApplicationUpdateParamsBodySelfHostedApplicationMfaConfigAllowedAuthenticatorTotp, zero_trust.AccessApplicationUpdateParamsBodySelfHostedApplicationMfaConfigAllowedAuthenticatorBiometrics, zero_trust.AccessApplicationUpdateParamsBodySelfHostedApplicationMfaConfigAllowedAuthenticatorSecurityKey}),
-					MfaBypass:             cloudflare.F(false),
+					MfaDisabled:           cloudflare.F(false),
 					SessionDuration:       cloudflare.F("24h"),
 				}),
 				Name: cloudflare.F("Admin Site"),
@@ -307,6 +309,7 @@ func TestAccessApplicationListWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -341,6 +344,7 @@ func TestAccessApplicationDeleteWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -371,6 +375,7 @@ func TestAccessApplicationGetWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -401,6 +406,7 @@ func TestAccessApplicationRevokeTokensWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)

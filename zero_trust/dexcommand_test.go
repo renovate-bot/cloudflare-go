@@ -25,6 +25,7 @@ func TestDEXCommandNew(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -41,6 +42,7 @@ func TestDEXCommandNew(t *testing.T) {
 				TestAllRoutes:   cloudflare.F(true),
 				TimeLimitMin:    cloudflare.F(1.000000),
 			}),
+			RegistrationID: cloudflare.F("registration_id"),
 		}}),
 	})
 	if err != nil {
@@ -62,6 +64,7 @@ func TestDEXCommandListWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)

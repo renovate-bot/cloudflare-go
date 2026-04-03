@@ -25,12 +25,13 @@ func TestDNSSummaryV2WithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
 	_, err := client.Radar.DNS.SummaryV2(
 		context.TODO(),
-		radar.DNSSummaryV2ParamsDimensionIPVersion,
+		radar.DNSSummaryV2ParamsDimensionAs,
 		radar.DNSSummaryV2Params{
 			ASN:            cloudflare.F([]string{"string"}),
 			CacheHit:       cloudflare.F([]bool{true}),
@@ -74,6 +75,7 @@ func TestDNSTimeseriesWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -119,12 +121,13 @@ func TestDNSTimeseriesGroupsV2WithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
 	_, err := client.Radar.DNS.TimeseriesGroupsV2(
 		context.TODO(),
-		radar.DNSTimeseriesGroupsV2ParamsDimensionIPVersion,
+		radar.DNSTimeseriesGroupsV2ParamsDimensionAs,
 		radar.DNSTimeseriesGroupsV2Params{
 			AggInterval:    cloudflare.F(radar.DNSTimeseriesGroupsV2ParamsAggInterval1h),
 			ASN:            cloudflare.F([]string{"string"}),

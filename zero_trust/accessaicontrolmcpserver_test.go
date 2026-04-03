@@ -24,6 +24,7 @@ func TestAccessAIControlMcpServerNewWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -31,7 +32,7 @@ func TestAccessAIControlMcpServerNewWithOptionalParams(t *testing.T) {
 		AccountID:       cloudflare.F("a86a8f5c339544d7bdc89926de14fb8c"),
 		ID:              cloudflare.F("my-mcp-server"),
 		AuthType:        cloudflare.F(zero_trust.AccessAIControlMcpServerNewParamsAuthTypeUnauthenticated),
-		Hostname:        cloudflare.F("https://exmaple.com/mcp"),
+		Hostname:        cloudflare.F("https://example.com/mcp"),
 		Name:            cloudflare.F("My MCP Server"),
 		AuthCredentials: cloudflare.F("auth_credentials"),
 		Description:     cloudflare.F("This is one remote mcp server"),
@@ -55,6 +56,7 @@ func TestAccessAIControlMcpServerUpdateWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -87,6 +89,7 @@ func TestAccessAIControlMcpServerListWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -115,6 +118,7 @@ func TestAccessAIControlMcpServerDelete(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -144,6 +148,7 @@ func TestAccessAIControlMcpServerRead(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -173,6 +178,7 @@ func TestAccessAIControlMcpServerSync(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)

@@ -25,6 +25,7 @@ func TestOrganizationNewWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -48,7 +49,6 @@ func TestOrganizationNewWithOptionalParams(t *testing.T) {
 			AllowedAuthenticators: cloudflare.F([]zero_trust.OrganizationNewParamsMfaConfigAllowedAuthenticator{zero_trust.OrganizationNewParamsMfaConfigAllowedAuthenticatorTotp, zero_trust.OrganizationNewParamsMfaConfigAllowedAuthenticatorBiometrics, zero_trust.OrganizationNewParamsMfaConfigAllowedAuthenticatorSecurityKey}),
 			SessionDuration:       cloudflare.F("24h"),
 		}),
-		MfaConfigurationAllowed:        cloudflare.F(true),
 		MfaRequiredForAllApps:          cloudflare.F(false),
 		SessionDuration:                cloudflare.F("24h"),
 		UIReadOnlyToggleReason:         cloudflare.F("Temporarily turn off the UI read only lock to make a change via the UI"),
@@ -75,6 +75,7 @@ func TestOrganizationUpdateWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -101,7 +102,6 @@ func TestOrganizationUpdateWithOptionalParams(t *testing.T) {
 			AllowedAuthenticators: cloudflare.F([]zero_trust.OrganizationUpdateParamsMfaConfigAllowedAuthenticator{zero_trust.OrganizationUpdateParamsMfaConfigAllowedAuthenticatorTotp, zero_trust.OrganizationUpdateParamsMfaConfigAllowedAuthenticatorBiometrics, zero_trust.OrganizationUpdateParamsMfaConfigAllowedAuthenticatorSecurityKey}),
 			SessionDuration:       cloudflare.F("24h"),
 		}),
-		MfaConfigurationAllowed:        cloudflare.F(true),
 		MfaRequiredForAllApps:          cloudflare.F(false),
 		Name:                           cloudflare.F("Widget Corps Internal Applications"),
 		SessionDuration:                cloudflare.F("24h"),
@@ -129,6 +129,7 @@ func TestOrganizationListWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -155,6 +156,7 @@ func TestOrganizationRevokeUsersWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)

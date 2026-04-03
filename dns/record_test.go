@@ -26,18 +26,20 @@ func TestRecordNewWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
 	_, err := client.DNS.Records.New(context.TODO(), dns.RecordNewParams{
 		ZoneID: cloudflare.F("023e105f4ecef8ad9ca31a8372d0c353"),
 		Body: dns.ARecordParam{
-			Name:    cloudflare.F("example.com"),
-			TTL:     cloudflare.F(dns.TTL1),
-			Type:    cloudflare.F(dns.ARecordTypeA),
-			Comment: cloudflare.F("Domain verification record"),
-			Content: cloudflare.F("198.51.100.4"),
-			Proxied: cloudflare.F(true),
+			Name:           cloudflare.F("example.com"),
+			TTL:            cloudflare.F(dns.TTL1),
+			Type:           cloudflare.F(dns.ARecordTypeA),
+			Comment:        cloudflare.F("Domain verification record"),
+			Content:        cloudflare.F("198.51.100.4"),
+			PrivateRouting: cloudflare.F(true),
+			Proxied:        cloudflare.F(true),
 			Settings: cloudflare.F(dns.ARecordSettingsParam{
 				IPV4Only: cloudflare.F(true),
 				IPV6Only: cloudflare.F(true),
@@ -65,6 +67,7 @@ func TestRecordUpdateWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -74,12 +77,13 @@ func TestRecordUpdateWithOptionalParams(t *testing.T) {
 		dns.RecordUpdateParams{
 			ZoneID: cloudflare.F("023e105f4ecef8ad9ca31a8372d0c353"),
 			Body: dns.ARecordParam{
-				Name:    cloudflare.F("example.com"),
-				TTL:     cloudflare.F(dns.TTL1),
-				Type:    cloudflare.F(dns.ARecordTypeA),
-				Comment: cloudflare.F("Domain verification record"),
-				Content: cloudflare.F("198.51.100.4"),
-				Proxied: cloudflare.F(true),
+				Name:           cloudflare.F("example.com"),
+				TTL:            cloudflare.F(dns.TTL1),
+				Type:           cloudflare.F(dns.ARecordTypeA),
+				Comment:        cloudflare.F("Domain verification record"),
+				Content:        cloudflare.F("198.51.100.4"),
+				PrivateRouting: cloudflare.F(true),
+				Proxied:        cloudflare.F(true),
 				Settings: cloudflare.F(dns.ARecordSettingsParam{
 					IPV4Only: cloudflare.F(true),
 					IPV6Only: cloudflare.F(true),
@@ -108,6 +112,7 @@ func TestRecordListWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -170,6 +175,7 @@ func TestRecordDelete(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -200,6 +206,7 @@ func TestRecordBatchWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -210,12 +217,13 @@ func TestRecordBatchWithOptionalParams(t *testing.T) {
 		}}),
 		Patches: cloudflare.F([]dns.BatchPatchUnionParam{dns.BatchPatchARecordParam(dns.BatchPatchARecordParam{
 			ARecordParam: dns.ARecordParam{
-				Name:    cloudflare.F("example.com"),
-				TTL:     cloudflare.F(dns.TTL1),
-				Type:    cloudflare.F(dns.ARecordTypeA),
-				Comment: cloudflare.F("Domain verification record"),
-				Content: cloudflare.F("198.51.100.4"),
-				Proxied: cloudflare.F(true),
+				Name:           cloudflare.F("example.com"),
+				TTL:            cloudflare.F(dns.TTL1),
+				Type:           cloudflare.F(dns.ARecordTypeA),
+				Comment:        cloudflare.F("Domain verification record"),
+				Content:        cloudflare.F("198.51.100.4"),
+				PrivateRouting: cloudflare.F(true),
+				Proxied:        cloudflare.F(true),
 				Settings: cloudflare.F(dns.ARecordSettingsParam{
 					IPV4Only: cloudflare.F(true),
 					IPV6Only: cloudflare.F(true),
@@ -225,12 +233,13 @@ func TestRecordBatchWithOptionalParams(t *testing.T) {
 			ID: cloudflare.F("023e105f4ecef8ad9ca31a8372d0c353"),
 		})}),
 		Posts: cloudflare.F([]dns.RecordBatchParamsPostUnion{dns.ARecordParam{
-			Name:    cloudflare.F("example.com"),
-			TTL:     cloudflare.F(dns.TTL1),
-			Type:    cloudflare.F(dns.ARecordTypeA),
-			Comment: cloudflare.F("Domain verification record"),
-			Content: cloudflare.F("198.51.100.4"),
-			Proxied: cloudflare.F(true),
+			Name:           cloudflare.F("example.com"),
+			TTL:            cloudflare.F(dns.TTL1),
+			Type:           cloudflare.F(dns.ARecordTypeA),
+			Comment:        cloudflare.F("Domain verification record"),
+			Content:        cloudflare.F("198.51.100.4"),
+			PrivateRouting: cloudflare.F(true),
+			Proxied:        cloudflare.F(true),
 			Settings: cloudflare.F(dns.ARecordSettingsParam{
 				IPV4Only: cloudflare.F(true),
 				IPV6Only: cloudflare.F(true),
@@ -239,12 +248,13 @@ func TestRecordBatchWithOptionalParams(t *testing.T) {
 		}}),
 		Puts: cloudflare.F([]dns.BatchPutUnionParam{dns.BatchPutARecordParam(dns.BatchPutARecordParam{
 			ARecordParam: dns.ARecordParam{
-				Name:    cloudflare.F("example.com"),
-				TTL:     cloudflare.F(dns.TTL1),
-				Type:    cloudflare.F(dns.ARecordTypeA),
-				Comment: cloudflare.F("Domain verification record"),
-				Content: cloudflare.F("198.51.100.4"),
-				Proxied: cloudflare.F(true),
+				Name:           cloudflare.F("example.com"),
+				TTL:            cloudflare.F(dns.TTL1),
+				Type:           cloudflare.F(dns.ARecordTypeA),
+				Comment:        cloudflare.F("Domain verification record"),
+				Content:        cloudflare.F("198.51.100.4"),
+				PrivateRouting: cloudflare.F(true),
+				Proxied:        cloudflare.F(true),
 				Settings: cloudflare.F(dns.ARecordSettingsParam{
 					IPV4Only: cloudflare.F(true),
 					IPV6Only: cloudflare.F(true),
@@ -274,6 +284,7 @@ func TestRecordEditWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -283,12 +294,13 @@ func TestRecordEditWithOptionalParams(t *testing.T) {
 		dns.RecordEditParams{
 			ZoneID: cloudflare.F("023e105f4ecef8ad9ca31a8372d0c353"),
 			Body: dns.ARecordParam{
-				Name:    cloudflare.F("example.com"),
-				TTL:     cloudflare.F(dns.TTL1),
-				Type:    cloudflare.F(dns.ARecordTypeA),
-				Comment: cloudflare.F("Domain verification record"),
-				Content: cloudflare.F("198.51.100.4"),
-				Proxied: cloudflare.F(true),
+				Name:           cloudflare.F("example.com"),
+				TTL:            cloudflare.F(dns.TTL1),
+				Type:           cloudflare.F(dns.ARecordTypeA),
+				Comment:        cloudflare.F("Domain verification record"),
+				Content:        cloudflare.F("198.51.100.4"),
+				PrivateRouting: cloudflare.F(true),
+				Proxied:        cloudflare.F(true),
 				Settings: cloudflare.F(dns.ARecordSettingsParam{
 					IPV4Only: cloudflare.F(true),
 					IPV6Only: cloudflare.F(true),
@@ -316,6 +328,7 @@ func TestRecordExport(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -342,6 +355,7 @@ func TestRecordGet(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -372,6 +386,7 @@ func TestRecordImportWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -399,6 +414,7 @@ func TestRecordScan(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -425,6 +441,7 @@ func TestRecordScanList(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -450,18 +467,20 @@ func TestRecordScanReviewWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
 	_, err := client.DNS.Records.ScanReview(context.TODO(), dns.RecordScanReviewParams{
 		ZoneID: cloudflare.F("023e105f4ecef8ad9ca31a8372d0c353"),
 		Accepts: cloudflare.F([]dns.RecordScanReviewParamsAcceptUnion{dns.ARecordParam{
-			Name:    cloudflare.F("example.com"),
-			TTL:     cloudflare.F(dns.TTL1),
-			Type:    cloudflare.F(dns.ARecordTypeA),
-			Comment: cloudflare.F("Domain verification record"),
-			Content: cloudflare.F("198.51.100.4"),
-			Proxied: cloudflare.F(true),
+			Name:           cloudflare.F("example.com"),
+			TTL:            cloudflare.F(dns.TTL1),
+			Type:           cloudflare.F(dns.ARecordTypeA),
+			Comment:        cloudflare.F("Domain verification record"),
+			Content:        cloudflare.F("198.51.100.4"),
+			PrivateRouting: cloudflare.F(true),
+			Proxied:        cloudflare.F(true),
 			Settings: cloudflare.F(dns.ARecordSettingsParam{
 				IPV4Only: cloudflare.F(true),
 				IPV6Only: cloudflare.F(true),
@@ -491,6 +510,7 @@ func TestRecordScanTrigger(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)

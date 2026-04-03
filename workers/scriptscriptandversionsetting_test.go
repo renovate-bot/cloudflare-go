@@ -25,6 +25,7 @@ func TestScriptScriptAndVersionSettingEditWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -34,6 +35,10 @@ func TestScriptScriptAndVersionSettingEditWithOptionalParams(t *testing.T) {
 		workers.ScriptScriptAndVersionSettingEditParams{
 			AccountID: cloudflare.F("023e105f4ecef8ad9ca31a8372d0c353"),
 			Settings: cloudflare.F(workers.ScriptScriptAndVersionSettingEditParamsSettings{
+				Annotations: cloudflare.F(workers.ScriptScriptAndVersionSettingEditParamsSettingsAnnotations{
+					WorkersMessage: cloudflare.F("Fixed bug."),
+					WorkersTag:     cloudflare.F("v1.0.1"),
+				}),
 				Bindings: cloudflare.F([]workers.ScriptScriptAndVersionSettingEditParamsSettingsBindingUnion{workers.ScriptScriptAndVersionSettingEditParamsSettingsBindingsWorkersBindingKindPlainText{
 					Name: cloudflare.F("MY_ENV_VAR"),
 					Text: cloudflare.F("my_data"),
@@ -71,6 +76,12 @@ func TestScriptScriptAndVersionSettingEditWithOptionalParams(t *testing.T) {
 						HeadSamplingRate: cloudflare.F(0.100000),
 						Persist:          cloudflare.F(true),
 					}),
+					Traces: cloudflare.F(workers.ScriptScriptAndVersionSettingEditParamsSettingsObservabilityTraces{
+						Destinations:     cloudflare.F([]string{"cloudflare"}),
+						Enabled:          cloudflare.F(true),
+						HeadSamplingRate: cloudflare.F(0.100000),
+						Persist:          cloudflare.F(true),
+					}),
 				}),
 				Placement: cloudflare.F[workers.ScriptScriptAndVersionSettingEditParamsSettingsPlacementUnion](workers.ScriptScriptAndVersionSettingEditParamsSettingsPlacementMode{
 					Mode: cloudflare.F(workers.ScriptScriptAndVersionSettingEditParamsSettingsPlacementModeModeSmart),
@@ -104,6 +115,7 @@ func TestScriptScriptAndVersionSettingGet(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)

@@ -24,6 +24,7 @@ func TestSiteLANNewWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -31,10 +32,12 @@ func TestSiteLANNewWithOptionalParams(t *testing.T) {
 		context.TODO(),
 		"023e105f4ecef8ad9ca31a8372d0c353",
 		magic_transit.SiteLANNewParams{
-			AccountID: cloudflare.F("023e105f4ecef8ad9ca31a8372d0c353"),
-			BondID:    cloudflare.F(int64(2)),
-			HaLink:    cloudflare.F(true),
-			Name:      cloudflare.F("name"),
+			AccountID:     cloudflare.F("023e105f4ecef8ad9ca31a8372d0c353"),
+			BondID:        cloudflare.F(int64(2)),
+			HaLink:        cloudflare.F(true),
+			IsBreakout:    cloudflare.F(true),
+			IsPrioritized: cloudflare.F(true),
+			Name:          cloudflare.F("name"),
 			Nat: cloudflare.F(magic_transit.NatParam{
 				StaticPrefix: cloudflare.F("192.0.2.0/24"),
 			}),
@@ -86,6 +89,7 @@ func TestSiteLANUpdateWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -94,9 +98,11 @@ func TestSiteLANUpdateWithOptionalParams(t *testing.T) {
 		"023e105f4ecef8ad9ca31a8372d0c353",
 		"023e105f4ecef8ad9ca31a8372d0c353",
 		magic_transit.SiteLANUpdateParams{
-			AccountID: cloudflare.F("023e105f4ecef8ad9ca31a8372d0c353"),
-			BondID:    cloudflare.F(int64(2)),
-			Name:      cloudflare.F("name"),
+			AccountID:     cloudflare.F("023e105f4ecef8ad9ca31a8372d0c353"),
+			BondID:        cloudflare.F(int64(2)),
+			IsBreakout:    cloudflare.F(true),
+			IsPrioritized: cloudflare.F(true),
+			Name:          cloudflare.F("name"),
 			Nat: cloudflare.F(magic_transit.NatParam{
 				StaticPrefix: cloudflare.F("192.0.2.0/24"),
 			}),
@@ -148,6 +154,7 @@ func TestSiteLANList(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -177,6 +184,7 @@ func TestSiteLANDelete(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -207,6 +215,7 @@ func TestSiteLANEditWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -215,9 +224,11 @@ func TestSiteLANEditWithOptionalParams(t *testing.T) {
 		"023e105f4ecef8ad9ca31a8372d0c353",
 		"023e105f4ecef8ad9ca31a8372d0c353",
 		magic_transit.SiteLANEditParams{
-			AccountID: cloudflare.F("023e105f4ecef8ad9ca31a8372d0c353"),
-			BondID:    cloudflare.F(int64(2)),
-			Name:      cloudflare.F("name"),
+			AccountID:     cloudflare.F("023e105f4ecef8ad9ca31a8372d0c353"),
+			BondID:        cloudflare.F(int64(2)),
+			IsBreakout:    cloudflare.F(true),
+			IsPrioritized: cloudflare.F(true),
+			Name:          cloudflare.F("name"),
 			Nat: cloudflare.F(magic_transit.NatParam{
 				StaticPrefix: cloudflare.F("192.0.2.0/24"),
 			}),
@@ -269,6 +280,7 @@ func TestSiteLANGet(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)

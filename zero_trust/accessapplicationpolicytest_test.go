@@ -24,6 +24,7 @@ func TestAccessApplicationPolicyTestNewWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
@@ -61,7 +62,7 @@ func TestAccessApplicationPolicyTestNewWithOptionalParams(t *testing.T) {
 			IsolationRequired: cloudflare.F(false),
 			MfaConfig: cloudflare.F(zero_trust.AccessApplicationPolicyTestNewParamsPoliciesObjectMfaConfig{
 				AllowedAuthenticators: cloudflare.F([]zero_trust.AccessApplicationPolicyTestNewParamsPoliciesObjectMfaConfigAllowedAuthenticator{zero_trust.AccessApplicationPolicyTestNewParamsPoliciesObjectMfaConfigAllowedAuthenticatorTotp, zero_trust.AccessApplicationPolicyTestNewParamsPoliciesObjectMfaConfigAllowedAuthenticatorBiometrics, zero_trust.AccessApplicationPolicyTestNewParamsPoliciesObjectMfaConfigAllowedAuthenticatorSecurityKey}),
-				MfaBypass:             cloudflare.F(false),
+				MfaDisabled:           cloudflare.F(false),
 				SessionDuration:       cloudflare.F("24h"),
 			}),
 			PurposeJustificationPrompt:   cloudflare.F("Please enter a justification for entering this protected domain."),
@@ -93,6 +94,7 @@ func TestAccessApplicationPolicyTestGet(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)

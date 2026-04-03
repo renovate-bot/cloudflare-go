@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-package ai_search_test
+package google_tag_gateway_test
 
 import (
 	"context"
@@ -9,12 +9,12 @@ import (
 	"testing"
 
 	"github.com/cloudflare/cloudflare-go/v6"
-	"github.com/cloudflare/cloudflare-go/v6/ai_search"
+	"github.com/cloudflare/cloudflare-go/v6/google_tag_gateway"
 	"github.com/cloudflare/cloudflare-go/v6/internal/testutil"
 	"github.com/cloudflare/cloudflare-go/v6/option"
 )
 
-func TestInstanceItemListWithOptionalParams(t *testing.T) {
+func TestConfigUpdateWithOptionalParams(t *testing.T) {
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
 		baseURL = envURL
@@ -24,20 +24,20 @@ func TestInstanceItemListWithOptionalParams(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
-	_, err := client.AISearch.Instances.Items.List(
-		context.TODO(),
-		"my-ai-search",
-		ai_search.InstanceItemListParams{
-			AccountID: cloudflare.F("c3dc5f0b34a14ff8e1b3ec04895e1b22"),
-			Page:      cloudflare.F(int64(1)),
-			PerPage:   cloudflare.F(int64(0)),
-			Search:    cloudflare.F("search"),
-			Status:    cloudflare.F(ai_search.InstanceItemListParamsStatusQueued),
+	_, err := client.GoogleTagGateway.Config.Update(context.TODO(), google_tag_gateway.ConfigUpdateParams{
+		ZoneID: cloudflare.F("023e105f4ecef8ad9ca31a8372d0c353"),
+		Config: google_tag_gateway.ConfigParam{
+			Enabled:        cloudflare.F(true),
+			Endpoint:       cloudflare.F("/metrics"),
+			HideOriginalIP: cloudflare.F(true),
+			MeasurementID:  cloudflare.F("GTM-P2F3N47Q"),
+			SetUpTag:       cloudflare.F(true),
 		},
-	)
+	})
 	if err != nil {
 		var apierr *cloudflare.Error
 		if errors.As(err, &apierr) {
@@ -47,7 +47,7 @@ func TestInstanceItemListWithOptionalParams(t *testing.T) {
 	}
 }
 
-func TestInstanceItemGet(t *testing.T) {
+func TestConfigGet(t *testing.T) {
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
 		baseURL = envURL
@@ -57,17 +57,13 @@ func TestInstanceItemGet(t *testing.T) {
 	}
 	client := cloudflare.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAPIToken("Sn3lZJTBX6kkg7OdcBUAxOO963GEIyGQqnFTOFYY"),
 		option.WithAPIKey("144c9defac04969c7bfad8efaa8ea194"),
 		option.WithAPIEmail("user@example.com"),
 	)
-	_, err := client.AISearch.Instances.Items.Get(
-		context.TODO(),
-		"my-ai-search",
-		"item_id",
-		ai_search.InstanceItemGetParams{
-			AccountID: cloudflare.F("c3dc5f0b34a14ff8e1b3ec04895e1b22"),
-		},
-	)
+	_, err := client.GoogleTagGateway.Config.Get(context.TODO(), google_tag_gateway.ConfigGetParams{
+		ZoneID: cloudflare.F("023e105f4ecef8ad9ca31a8372d0c353"),
+	})
 	if err != nil {
 		var apierr *cloudflare.Error
 		if errors.As(err, &apierr) {
